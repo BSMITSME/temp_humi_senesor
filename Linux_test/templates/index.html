@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Data Plot</title>
+</head>
+<body>
+    <h1>Sensor Data Plot</h1>
+    
+    <h2> 식중독 오염도 </h2>
+    <p id='pollution_status'> </p>
+    <img id="plot" src="" alt="plot">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script type="text/javascript">
+	    const socket=io.connect('http://localhost:5001');
+	    socket.on('update_plot',function(filename){
+            document.getElementById('plot').src='static/'+filename+"?a="+Math.random();
+        });
+        
+        // 'update_pollution_index' 이벤트를 수신하여 식중독 오염도 값을 업데이트
+        socket.on('update_pollution', function(pollution_status) {
+            document.getElementById('pollution_status').innerText = '오염도: ' + pollution_status;
+        });
+        
+        function updatePlot() {
+            socket.emit('get_plot'); 
+            // 클라이언트에서 서버로 'get_pollution_index' 이벤트를 보내 식중독 오염도 값을 요청
+            socket.emit('get_pollution_index');
+        }
+        setInterval(updatePlot, 1000); // 1000 밀리초 = 1초
+        updatePlot(); // 초기 로딩 시 호출하여 초기화        
+    </script>
+</body>
+</html>
+
+
+        
