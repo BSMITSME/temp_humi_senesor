@@ -1,2 +1,2 @@
 # temp_humi_senesor
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/0d5fd6c8-0072-4ec6-b2ae-fed1d0b7996b/43ac229b-b68c-495a-b892-ebeec456f54c/Untitled.png)
+<img width="939" alt="image" src="https://github.com/BSMITSME/temp_humi_senesor/assets/77155103/652e7388-cd04-436b-add5-34ab3c622136">
